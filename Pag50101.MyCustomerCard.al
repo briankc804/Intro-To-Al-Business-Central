@@ -25,6 +25,9 @@ page 50102 "My Vendor Card"
                 field("Amount Paid"; Rec."Amount Paid")
                 {
                 }
+                field("Balance"; Rec."Balance")
+                {
+                }
                 field(Status; Rec.Status)
                 {
                 }

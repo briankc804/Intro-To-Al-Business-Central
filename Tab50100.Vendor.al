@@ -35,12 +35,16 @@ table 50100 "Vendor test"
         {
             Caption = 'Amount Paid';
         }
-        field(5; Status; Option)
+        field(5; "Balance"; Decimal)
+        {
+            Caption = 'Balance';
+        }
+        field(6; Status; Option)
         {
             Caption = 'Status';
             OptionMembers = Posted,"Not posted";
         }
-        field(6; Posted; Boolean)
+        field(7; Posted; Boolean)
         {
             Caption = 'Posted';
         }

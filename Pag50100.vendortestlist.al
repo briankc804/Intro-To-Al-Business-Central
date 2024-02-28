@@ -25,6 +25,9 @@ page 50100 "vendor-test list"
                 field("Amount Paid"; Rec."Amount Paid")
                 {
                 }
+                field("Balance"; Rec."Balance")
+                {
+                }
                 field(Status; Rec.Status)
                 {
                 }

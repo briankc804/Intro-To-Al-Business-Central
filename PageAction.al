@@ -15,9 +15,28 @@ Page 50103 MyPage
                 Caption = 'Input';
                 field("Code"; Rec."Code")
                 {
+                    ApplicationArea = All;
                 }
+                field("Amount"; Rec."Amount")
+                {
+                    ApplicationArea = All;
+                }
+                field("Amount Paid"; Rec."Amount Paid")
+                {
+                    ApplicationArea = All;
+                }
+
             }
 
+            group(Output)
+            {
+                Caption = 'Output';
+                field("Balance"; Rec."Balance")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+            }
         }
     }
 
@@ -26,32 +45,48 @@ Page 50103 MyPage
 
         area(Processing)
         {
-            action("Posting")
+            action("Calculating Balance")
             {
 
-                Caption = 'Posting';
+                Caption = 'Calculating Balance';
                 ApplicationArea = All;
                 Image = Insurance;
                 trigger OnAction()
                 begin
-                    Rec.Name := 'new_area';
-                    Rec.Modify();
-                    customer.Run();
-                    Message('saved');
+                    Rec.Balance := Rec.Amount - Rec."Amount Paid";
+                    rec.Modify();
                 end;
             }
-        }
-        area(Promoted)
-        {
-            group(Category_Process)
-            {
-                Caption = 'Category_Process';
 
-                actionref("Posting_Promoted"; "Posting")
-                {
-                }
-            }
+            // area(Processing)
+            // {
+            //     action("Posting")
+            //     {
+
+            //         Caption = 'Posting';
+            //         ApplicationArea = All;
+            //         Image = Insurance;
+            //         trigger OnAction()
+            //         begin
+            //             Rec.Name := 'new_area';
+            //             Rec.Modify();
+            //             Commit();
+            //             customer.Run();
+            //             Message('saved');
+            //         end;
+            //     }
         }
+        // area(Promoted)
+        // {
+        //     group(Category_Process)
+        //     {
+        //         Caption = 'Category_Process';
+
+        //         actionref("Posting_Promoted"; "Calculate balance    ")
+        //         {
+        //         }
+        //     }
+        // }
 
 
     }
