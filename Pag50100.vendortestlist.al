@@ -1,4 +1,4 @@
-page 50100 "vendor-test list"
+page 50100 "C"
 {
     ApplicationArea = All;
     Caption = 'vendor-test list';

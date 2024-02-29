@@ -54,39 +54,46 @@ Page 50103 MyPage
                 trigger OnAction()
                 begin
                     Rec.Balance := Rec.Amount - Rec."Amount Paid";
+                    Rec.Posted := true;
                     rec.Modify();
+                    Message(Format(Rec.Balance));
                 end;
             }
 
-            // area(Processing)
-            // {
-            //     action("Posting")
-            //     {
-
-            //         Caption = 'Posting';
-            //         ApplicationArea = All;
-            //         Image = Insurance;
-            //         trigger OnAction()
-            //         begin
-            //             Rec.Name := 'new_area';
-            //             Rec.Modify();
-            //             Commit();
-            //             customer.Run();
-            //             Message('saved');
-            //         end;
-            //     }
         }
-        // area(Promoted)
-        // {
-        //     group(Category_Process)
-        //     {
-        //         Caption = 'Category_Process';
 
-        //         actionref("Posting_Promoted"; "Calculate balance    ")
-        //         {
-        //         }
-        //     }
-        // }
+        area(Navigation)
+        {
+            action("Vendor")
+            {
+                ApplicationArea = all;
+                Caption = 'Vendor details';
+                RunObject = Page "My Vendor Card";
+
+
+
+            }
+            action("vendor-test list")
+            {
+                ApplicationArea = all;
+                Caption = 'Vendor list details';
+                RunObject = Page "C";
+
+
+
+            }
+        }
+
+        area(Creation)
+        {
+            action("New Customer")
+            {
+                ApplicationArea = All;
+                RunObject = Page "Customer Card";
+                Image = Post;
+
+            }
+        }
 
 
     }
