@@ -1,9 +1,9 @@
-page 50103 "My Vendor Card"
+page 50101 "Customer Table Fields"
 {
     ApplicationArea = All;
-    Caption = 'My Customer Card';
+    Caption = 'Customer Table Fields';
     PageType = Card;
-    SourceTable = "Vendor test";
+    SourceTable = "Customer Table Fields";
 
     layout
     {
@@ -13,25 +13,22 @@ page 50103 "My Vendor Card"
             {
                 Caption = 'General';
 
-                field("Code"; Rec."Code")
+                field(No; Rec.No)
                 {
                 }
                 field(Name; Rec.Name)
                 {
                 }
-                field(Amount; Rec.Amount)
+                field(Gender; Rec.Gender)
                 {
                 }
-                field("Amount Paid"; Rec."Amount Paid")
+                field(DOB; Rec.DOB)
                 {
                 }
-                field("Balance"; Rec."Balance")
+                field(Email; Rec.Email)
                 {
                 }
-                field(Status; Rec.Status)
-                {
-                }
-                field(Posted; Rec.Posted)
+                field("Phone Number"; Rec."Phone Number")
                 {
                 }
             }

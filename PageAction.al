@@ -1,4 +1,4 @@
-Page 50103 MyPage
+Page 50102 MyPage
 {
     PageType = Card;
     ApplicationArea = All;
@@ -77,7 +77,7 @@ Page 50103 MyPage
             {
                 ApplicationArea = all;
                 Caption = 'Vendor list details';
-                RunObject = Page "C";
+                // RunObject = Page "C";
 
 
 

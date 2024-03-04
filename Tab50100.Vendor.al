@@ -1,4 +1,4 @@
-table 50100 "Vendor test"
+table 50103 "Vendor test"
 {
     Caption = 'Vendor';
     DataClassification = ToBeClassified;
