@@ -3,10 +3,28 @@ report 50100 "Receipt Line Report"
     ApplicationArea = All;
     Caption = 'Receipt Line Report';
     UsageCategory = ReportsAndAnalysis;
+    RDLCLayout = './Receipt Line Report.RDL';
+    DefaultLayout = RDLC;
     dataset
     {
+        dataitem("Receipts Header Table";"Receipts Header Table")
+        {
+            column(No;No)
+            {
+
+            }
+            column(CustomerNo;CustomerNo)
+            {
+
+            }
+            column(Customer_Name;"Customer Name")
+            {
+
+            }
         dataitem(ReceiptsLines; "Receipts Lines")
         {
+            DataItemLink = "Header No" = field(No);
+
             column(HeaderNo; "Header No")
             {
             }
@@ -26,6 +44,9 @@ report 50100 "Receipt Line Report"
             {
             }
         }
+
+        }
+
     }
     requestpage
     {

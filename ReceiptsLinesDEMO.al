@@ -13,6 +13,14 @@ table 50107 "Receipts Lines"
         field(2; "Product No"; Code[50])
         {
             Caption = 'Product No';
+            TableRelation = "Products Table".No;
+            trigger OnValidate()
+            begin
+                if Product.Get("Product No") then begin
+                    "Product Name" := Product.Name;
+                    "Unit Price" := Product."Unit Price";
+                end;
+            end;
         }
         field(3; "Product Name"; Text[50])
         {
@@ -33,9 +41,11 @@ table 50107 "Receipts Lines"
     }
     keys
     {
-        key(PK; "Header No")
+        key(PK;"Header No","Product No")
         {
             Clustered = true;
         }
     }
+    var
+        Product: Record "Products Table";
 }

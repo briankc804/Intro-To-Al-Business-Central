@@ -4,6 +4,7 @@ page 50103 "My Vendor Card"
     Caption = 'My Customer Card';
     PageType = Card;
     SourceTable = "Vendor test";
+    
 
     layout
     {
