@@ -42,32 +42,48 @@ page 50105 "Receipts Header Table Page"
         }
     }
 
-actions
-{
-    area(Processing)
+    actions
     {
-action(Receipts)
-{
-    ApplicationArea = All;
-    Promoted = true;
-    PromotedCategory= Report;
-    PromotedIsBig = true;
-    Image = Report;
-    
-    trigger OnAction()
-    begin
-        receiptH.Reset();
-        receiptH.SetRange(receiptH.No,receiptL."Header No");
-        if receiptH.Find('-') then begin
-            Report.Run(50100,true,false,receiptH);
-        end;
-    end;
-}
+        area(Processing)
+        {
+            action(Receipts)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Report;
+
+                trigger OnAction()
+                begin
+                    receiptH.Reset();
+                    receiptH.SetRange(No, Rec.No);
+                    if receiptH.Find('-') then begin
+                        Report.Run(50100, true, false, receiptH);
+                    end;
+                end;
+            }
+            action("Send Email")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Email;
+
+                trigger OnAction()
+                begin
+                    ReceiptEmail.SendAnEmail();
+
+                end;
+            }
+        }
     }
-}
-var
-    receiptH: Record "Receipts Header Table";
-    receiptL: Record "Receipts Lines";
+
+    var
+        receiptH: Record "Receipts Header Table";
+        receiptL: Record "Receipts Lines";
+        ReceiptEmail: Codeunit ReceiptEmail;
 
 }
 

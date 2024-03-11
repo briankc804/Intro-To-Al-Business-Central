@@ -38,10 +38,14 @@ table 50107 "Receipts Lines"
         {
             Caption = 'Amount';
         }
+        field(7; Lineno; Integer)
+        {
+            AutoIncrement = true;
+        }
     }
     keys
     {
-        key(PK;"Header No","Product No")
+        key(PK; "Header No", Lineno)
         {
             Clustered = true;
         }

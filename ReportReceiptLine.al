@@ -7,43 +7,43 @@ report 50100 "Receipt Line Report"
     DefaultLayout = RDLC;
     dataset
     {
-        dataitem("Receipts Header Table";"Receipts Header Table")
+        dataitem("Receipts Header Table"; "Receipts Header Table")
         {
-            column(No;No)
+            column(No; No)
             {
 
             }
-            column(CustomerNo;CustomerNo)
+            column(CustomerNo; CustomerNo)
             {
 
             }
-            column(Customer_Name;"Customer Name")
+            column(Customer_Name; "Customer Name")
             {
 
             }
-        dataitem(ReceiptsLines; "Receipts Lines")
-        {
-            DataItemLink = "Header No" = field(No);
+            dataitem(ReceiptsLines; "Receipts Lines")
+            {
+                DataItemLink = "Header No" = field(No);
 
-            column(HeaderNo; "Header No")
-            {
+                column(HeaderNo; "Header No")
+                {
+                }
+                column(ProductNo; "Product No")
+                {
+                }
+                column(ProductName; "Product Name")
+                {
+                }
+                column(UnitPrice; "Unit Price")
+                {
+                }
+                column(Quantity; Quantity)
+                {
+                }
+                column(Amount; Amount)
+                {
+                }
             }
-            column(ProductNo; "Product No")
-            {
-            }
-            column(ProductName; "Product Name")
-            {
-            }
-            column(UnitPrice; "Unit Price")
-            {
-            }
-            column(Quantity; Quantity)
-            {
-            }
-            column(Amount; Amount)
-            {
-            }
-        }
 
         }
 
