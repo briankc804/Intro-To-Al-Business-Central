@@ -17,8 +17,9 @@ table 50105 "Products Table"
         {
             Caption = 'Unit Price';
         }
-        field(4; "Unit Measure"; Text[50])
+        field(4; "Unit Measure"; Option)
         {
+            OptionMembers = " ",Pieces,Kg,Grams;
             Caption = 'Unit Measure';
         }
         field(5; "Available Quantity"; Decimal)

@@ -10,6 +10,7 @@ table 50111 "Customer Table Fields"
         {
             Caption = 'No';
             NotBlank = true;
+            TableRelation = "No. Series".Code;
             trigger OnValidate()
             var
                 customer2: Record "Customer Table Fields";
@@ -25,6 +26,7 @@ table 50111 "Customer Table Fields"
         field(1; Name; Text[250])
         {
             Caption = 'Name';
+            
         }
         field(3; Gender; Option)
         {
@@ -40,7 +42,7 @@ table 50111 "Customer Table Fields"
         {
             Caption = 'Email';
         }
-        field(6; "Phone Number"; Text[100])
+        field(6; "Phone Number"; Integer)
         {
             Caption = 'Phone Number';
         }
@@ -52,4 +54,14 @@ table 50111 "Customer Table Fields"
             Clustered = true;
         }
     }
+    // trigger OnInsert()
+    // var
+    //     Setup : Record "Customer ";
+    //     NoMGT : Codeunit NoSeriesManagement;
+    // begin
+    //     if No = '' then begin 
+    //         Setup.Get();
+    //         No :=NoMGT.GetNextNo(Setup."No. Series for Customer",WORKDATE, true)
+    //     end;    
+    // end;
 }

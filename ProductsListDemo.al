@@ -5,6 +5,7 @@ page 50108 "Products Table List"
     PageType = List;
     CardPageId = "Products Table Page";
     SourceTable = "Products Table";
+    
     UsageCategory = Lists;
 
     layout

@@ -9,7 +9,7 @@ codeunit 50110 ReceiptEmail
         EmailBody: Label ' Dear <b>%1<b>,<br> <p> Please find the attached document below </p><hr>';
 
     begin
-        EmailMsg.Create('briancheruiyot220@gmail.com', 'Sending an email in Al', '', true);
+        EmailMsg.Create('briancheruiyot220@outlook.com', 'Sending an email in Al', '', true);
         EmailMsg.AppendToBody(StrSubstNo(EmailBody, UserId));
         
         if UploadIntoStream('select the file', '', 'This Files|*.jpg,*.pdf;*.docx;*.xlsx;*.png', Filename, Instr) then
@@ -35,7 +35,7 @@ codeunit 50110 ReceiptEmail
 
     begin
         //
-        EmailMsg.Create('briancheruiyot220@gmail.com', 'Sending an email in Al', '', true);
+        EmailMsg.Create('briancheruiyot220@outlook.com', 'Sending an email in Al', '', true);
         EmailMsg.AppendToBody(StrSubstNo(EmailBody, UserId));
         if UploadIntoStream('select the file', '', 'This Files|*.jpg,*.pdf;*.docx;*.xlsx;*.png', Filename, Instr) then
             EmailMsg.AddAttachment(Filename, '', Instr)

@@ -4,6 +4,9 @@ page 50101 "Customer Table Fields"
     Caption = 'Customer Table Fields';
     PageType = Card;
     SourceTable = "Customer Table Fields";
+    UsageCategory = Administration;
+    DelayedInsert = false;
+    
 
     layout
     {
@@ -18,6 +21,9 @@ page 50101 "Customer Table Fields"
                 }
                 field(Name; Rec.Name)
                 {
+                    ApplicationArea = All;
+                    ShowMandatory = true;
+                    NotBlank = true;
                 }
                 field(Gender; Rec.Gender)
                 {
@@ -30,8 +36,28 @@ page 50101 "Customer Table Fields"
                 }
                 field("Phone Number"; Rec."Phone Number")
                 {
+                    Editable = true;
+                    ShowMandatory = true;
+                    NotBlank = true;
+
+                    trigger OnValidate()
+                    begin
+                        if (Rec."Phone Number" < 10) then 
+                            Error('Minimum characters should be 10');
+                        
+                    end;
                 }
             }
         }
     }
+    trigger OnOpenPage()
+    var
+     no : Code[20];
+    begin
+        if Rec.IsEmpty() then
+         Rec.Insert();
+        No := 'AAA123123';
+        no := IncStr(No);
+
+    end;
 }

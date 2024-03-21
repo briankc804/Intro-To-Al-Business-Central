@@ -21,6 +21,7 @@ pageextension 50100 "Demo Page" extends "Accountant Role Center"
                     Caption = 'Customer Table Fields List';
                     RunObject = Page "Customer Table Fields List";
 
+
                 }
                 action(Products)
                 {
