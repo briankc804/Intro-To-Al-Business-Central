@@ -30,6 +30,7 @@ page 50109 "Receipts Lines Listpart"
                 }
                 field(Amount; Rec.Amount)
                 {
+                    Editable =  false;
                 }
             }
         }

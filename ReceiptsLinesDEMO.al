@@ -19,6 +19,8 @@ table 50107 "Receipts Lines"
                 if Product.Get("Product No") then begin
                     "Product Name" := Product.Name;
                     "Unit Price" := Product."Unit Price";
+                    "Amount" := "Quantity" * "Unit Price";
+                   
                 end;
             end;
         }
@@ -29,14 +31,25 @@ table 50107 "Receipts Lines"
         field(4; "Unit Price"; Decimal)
         {
             Caption = 'Unit Price ';
+            trigger OnValidate()
+            begin
+                // Recalculate amount when unit price changes
+               "Amount" := "Quantity" * "Unit Price";
+            end;
         }
         field(5; Quantity; Decimal)
         {
             Caption = 'Quantity';
+            trigger OnValidate()
+            begin
+                // Recalculate amount when quantity changes
+                "Amount" := "Quantity" * "Unit Price";
+            end;
         }
         field(6; Amount; Decimal)
         {
             Caption = 'Amount';
+          
         }
         field(7; Lineno; Integer)
         {
@@ -52,4 +65,9 @@ table 50107 "Receipts Lines"
     }
     var
         Product: Record "Products Table";
+ 
+
+    
+   
+
 }
