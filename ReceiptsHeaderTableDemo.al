@@ -49,7 +49,7 @@ table 50106 "Receipts Header Table"
             Caption = 'Total  Amount';
             FieldClass = FlowField;
             CalcFormula = sum("Receipts Lines".Amount where("Header No" = field(No)));
-            // CalcFormula = sum("Receipts Lines".Amount where("Receipts Lines"."Header No" = field(No)));
+     
             Editable = false;
         }
     }

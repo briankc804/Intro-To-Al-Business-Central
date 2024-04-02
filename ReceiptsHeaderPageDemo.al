@@ -74,6 +74,7 @@ page 50105 "Receipts Header Table Page"
                 trigger OnAction()
                 begin
                     ReceiptEmail.SendAnEmail();
+                    Rec."Sent to Customer" := true;
 
                 end;
             }

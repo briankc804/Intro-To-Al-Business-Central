@@ -1,3 +1,39 @@
+//for custom tables number series to change at sales and receivables setup
+
+tableextension 50134 SalesSetupext extends "Sales & Receivables Setup"
+{
+    fields
+    {
+        // Add changes to table fields here
+        field(120; CustomerNo; Code[10])
+        {
+            TableRelation = "No. Series";
+        }
+    }
+
+}
+
+
+//page extension
+pageextension 50106 SalesPage extends "Sales & Receivables Setup"
+{
+    layout
+    {
+        addafter("Customer Nos.")
+        {
+            field(CustomerNo; Rec.CustomerNo)
+            {
+                ApplicationArea = all;
+                Caption = 'Customer Test';
+                // TableRelation = "No. Series";
+            }
+        }
+    }
+
+
+}
+
+
 table 50111 "Customer Table Fields"
 {
     Caption = 'Customer Table Fields';
@@ -5,23 +41,13 @@ table 50111 "Customer Table Fields"
 
     fields
     {
-
         field(2; No; Code[49])
         {
             Caption = 'No';
-            //   NotBlank = true;
-            //TableRelation = "No. Series".Code;
-            // trigger OnValidate()
-            // var
-            //     customer2: Record "Customer Table Fields";
-            // begin
-            //     customer2.Reset();
-            //     if customer2.FindLast() then begin
-            //         Rec.No := IncStr(customer2.No);
-            //     end else begin
-            //         Rec.No := 'Customer01';
-            //     end;
-            // end;
+            Editable = False;
+            TableRelation = "No. Series";
+            
+
         }
         field(1; Name; Text[250])
         {
@@ -47,9 +73,10 @@ table 50111 "Customer Table Fields"
             Caption = 'Phone Number';
         }
 
-        field(7; "No.Series"; Code[20])
+        field(7; "No series"; Code[20])
         {
-            Caption = 'Phone Number';
+            TableRelation = "No. Series";
+            Caption = 'No series';
         }
 
 
@@ -61,31 +88,16 @@ table 50111 "Customer Table Fields"
             Clustered = true;
         }
     }
-    // trigger OnInsert()
-    // var
-    //     Setup: Record "Customer Table Fields";
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        noseries: Codeunit NoSeriesManagement;
 
-    // begin
-    //     if Rec.No = '' then begin
-    //         Setup.Get(Rec.No);
-    //         Rec.No := NoSeriesMgt.GetNextNo(Setup."No.Series", WORKDATE, true)
-        
-    //     end;
-    // end;
 
-    // var
-    //     NoSeriesMgt: Codeunit NoSeriesManagement;
-        
-    // trigger OnInsert()
-    // var
-    //     NoSeriesMgt: Codeunit NoSeriesManagement;
-    //     current: Record "Customer Table Fields";
-    //     NewNo: Code[20];
-    // begin
-    //     if Rec.No = '' then
-    //     begin
-    //       //  NewNo := NoSeriesMgt.GetNextNo(Rec.No. Code);
-    //         Rec.No := NewNo;
-    //     end;
-    // end;
+    trigger OnInsert()
+    begin
+        If rec."No" = '' then begin
+            noseries.InitSeries('CUST-NO', xRec."No series", 0D, "No", "No series");
+
+        end;
+    end;
 }

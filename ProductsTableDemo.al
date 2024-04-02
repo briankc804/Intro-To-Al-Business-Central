@@ -8,6 +8,8 @@ table 50105 "Products Table"
         field(1; "No"; Code[50])
         {
             Caption = 'No ';
+            Editable = False;
+            TableRelation = "No. Series";
         }
         field(2; Name; Text[50])
         {
@@ -26,6 +28,11 @@ table 50105 "Products Table"
         {
             Caption = 'Available Quantity';
         }
+        field(7; "No Series"; Code[20])
+        {
+            TableRelation = "No. Series";
+            Caption = 'No Series';
+        }
     }
     keys
     {
@@ -34,4 +41,15 @@ table 50105 "Products Table"
             Clustered = true;
         }
     }
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        Noseries: Codeunit NoSeriesManagement;
+
+    trigger OnInsert()
+    begin
+        If rec."No" = '' then begin
+            Noseries.InitSeries('PROD-NO', xRec."No Series", 0D, "No", "No Series");
+
+        end;
+    end;    
 }

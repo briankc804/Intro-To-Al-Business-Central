@@ -50,14 +50,5 @@ page 50101 "Customer Table Fields"
             }
         }
     }
-    trigger OnOpenPage()
-    var
-     no : Code[20];
-    begin
-        if Rec.IsEmpty() then
-         Rec.Insert();
-        No := 'AAA123123';
-        no := IncStr(No);
-
-    end;
+    
 }

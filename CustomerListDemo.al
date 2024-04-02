@@ -12,13 +12,14 @@ page 50104 "Customer Table Fields List"
         area(content)
         {
             repeater(General)
-            {
-                field(Name; Rec.Name)
-                {
-                }
+            { 
                 field(No; Rec.No)
                 {
                 }
+                field(Name; Rec.Name)
+                {
+                }
+                
                 field(Gender; Rec.Gender)
                 {
                 }
