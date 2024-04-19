@@ -73,8 +73,14 @@ page 50105 "Receipts Header Table Page"
 
                 trigger OnAction()
                 begin
+                    receiptH.Reset();
+                    receiptH.SetRange(No, Rec.No);
+                    if receiptH.Find('-') then begin
+                        
                     ReceiptEmail.SendAnEmail();
+
                     Rec."Sent to Customer" := true;
+                    end;
 
                 end;
             }

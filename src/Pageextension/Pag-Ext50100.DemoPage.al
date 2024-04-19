@@ -36,6 +36,13 @@ pageextension 50100 "Demo Page" extends "Accountant Role Center"
                     RunObject = Page "Receipts Header Table List";
                 }
 
+                 action(UnitMeasure)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Unit of Measure List';
+                    RunObject = Page "Unit of Measure List";
+                }
+
             }
         }
     }

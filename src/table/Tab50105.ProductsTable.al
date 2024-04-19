@@ -10,6 +10,8 @@ table 50105 "Products Table"
             Caption = 'No ';
             Editable = False;
             TableRelation = "No. Series";
+            
+
         }
         field(2; Name; Text[50])
         {
@@ -19,10 +21,10 @@ table 50105 "Products Table"
         {
             Caption = 'Unit Price';
         }
-        field(4; "Unit Measure"; Option)
+        field(4; "Unit Measure"; Code[30])
         {
-            OptionMembers = " ",Pieces,Kg,Grams;
             Caption = 'Unit Measure';
+            TableRelation = "Unit of Measure".Code;
         }
         field(5; "Available Quantity"; Decimal)
         {
